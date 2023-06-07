@@ -1,8 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:projec_8/common/color.dart';
 import 'package:projec_8/page/category.dart';
 import 'package:projec_8/page/touris.dart';
+import 'package:projec_8/routes/routes_imports.gr.dart';
 
+@RoutePage()
 class BookingApp extends StatelessWidget {
   const BookingApp({super.key});
 
@@ -126,7 +129,14 @@ class BookingApp extends StatelessWidget {
           Container(
             child: ListView.separated(
                 scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => TourisUI(),
+                itemBuilder: (context, index) {
+                  return InkWell(
+                    child: TourisUI(),
+                    onTap: () {
+                      context.router.push(const BookingDetail());
+                    },
+                  );
+                },
                 separatorBuilder: (context, index) => SizedBox(
                       width: 12,
                     ),

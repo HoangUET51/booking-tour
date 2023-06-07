@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:projec_8/page/booking.dart';
+import 'package:projec_8/routes/routes_imports.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final _appRouter = AppRouter();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      home: BookingApp(),
+      routerConfig: _appRouter.config(),
     );
   }
 }
