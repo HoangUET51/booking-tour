@@ -29,6 +29,34 @@ class BookingApp extends StatelessWidget {
           icon: Icons.add_alert_outlined,
           backgroundColor: Color(0xffEACB8E)),
     ];
+
+    final List<Touris> touris = [
+      Touris(
+          image: "assets/images/halong.jpg",
+          title: "Ha Long Bay",
+          content:
+              "Hạ Long là thành phố tỉnh lỵ của tỉnh Quảng Ninh, Việt Nam. Thành phố được đặt theo tên của vịnh Hạ Long...",
+          evaluate: "5,0"),
+      Touris(
+          image: "assets/images/chua.jpeg",
+          title: "The Huong Magoda",
+          content:
+              "Chùa Hương có lịch sử từ thế kỷ 15. Ngôi chùa được xây dựng với quy mô chính vào khoảng cuối thế kỷ 17, sau đó bị hủy hoại trong chiến tranh Đông Dương năm 1947...",
+          evaluate: "4,9"),
+      Touris(
+          image: "assets/images/duong-lam.jpg",
+          title: "Duong Lam Ancient Village",
+          content:
+              "Giá tour bao gồm: Giá vé vào cổng Ăn uống theo thực đơn đặc sản địa phương Trò chơi teambuilding...",
+          evaluate: "5,0"),
+      Touris(
+          image: "assets/images/thaprua.jpg",
+          title: "Turtle Tower",
+          content:
+              "Ngôi tháp được xây dựng trên một gò đất rộng khoảng 350m2, bình đồ hình chữ nhật có 4 tầng, tầng dưới xây rộng hơn, rồi thu nhỏ dần lên tầng trên...",
+          evaluate: "5,0"),
+    ];
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -130,17 +158,18 @@ class BookingApp extends StatelessWidget {
             child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
+                  final touri = touris[index];
                   return InkWell(
-                    child: TourisUI(),
+                    child: TourisUI(touri: touri),
                     onTap: () {
-                      context.router.push(const BookingDetail());
+                      context.router.push(BookingDetail(touri: touri));
                     },
                   );
                 },
                 separatorBuilder: (context, index) => SizedBox(
                       width: 12,
                     ),
-                itemCount: 5),
+                itemCount: touris.length),
             width: double.infinity,
             height: 280,
           )

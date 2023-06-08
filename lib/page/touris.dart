@@ -14,7 +14,9 @@ class Touris {
 }
 
 class TourisUI extends StatelessWidget {
-  const TourisUI({super.key});
+  const TourisUI({super.key, required this.touri});
+
+  final Touris touri;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class TourisUI extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(20)),
                 child: Image.asset(
-                  "assets/images/halong.jpg",
+                  touri.image,
                   fit: BoxFit.fill,
                 ),
               )),
@@ -58,7 +60,7 @@ class TourisUI extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Monument to Salavat Yulaev",
+                    touri.title,
                     style: TextStyle(
                         fontSize: 16,
                         color: Colors.white,
@@ -84,7 +86,7 @@ class TourisUI extends StatelessWidget {
                         width: 4,
                       ),
                       Text(
-                        "4,9",
+                        touri.evaluate,
                         style: TextStyle(color: Colors.white),
                       )
                     ]),

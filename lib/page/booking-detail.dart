@@ -2,10 +2,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:projec_8/common/color.dart';
 import 'package:projec_8/page/service.dart';
+import 'package:projec_8/page/touris.dart';
 
 @RoutePage()
 class BookingDetail extends StatelessWidget {
-  const BookingDetail({super.key});
+  BookingDetail({super.key, required this.touri});
+
+  final Touris touri;
 
   @override
   Widget build(BuildContext context) {
@@ -49,20 +52,27 @@ class BookingDetail extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Container(
         height: 64,
-        margin: const EdgeInsets.all(16),
+        margin: const EdgeInsets.only(top: 16, right: 16, left: 16),
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xffFF678B),
-          ),
+              backgroundColor: Color(0xffFF678B),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30))),
           onPressed: () {},
           child: const Center(
-            child: Text(
-              'Buy a tour',
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: Colors.white,
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Buy a tour',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                  ),
+                ),
+                Icon(Icons.navigate_next_rounded)
+              ],
             ),
           ),
         ),
@@ -76,8 +86,7 @@ class BookingDetail extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(24),
                   image: DecorationImage(
-                      image: AssetImage('assets/images/halong.jpg'),
-                      fit: BoxFit.cover)),
+                      image: AssetImage(touri.image), fit: BoxFit.cover)),
             ),
             Positioned(
               right: 35,
@@ -98,7 +107,7 @@ class BookingDetail extends StatelessWidget {
             height: 28,
           ),
           Text(
-            "Shulgaт-Tash cave",
+            touri.title,
             style: TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.w500,
@@ -108,9 +117,9 @@ class BookingDetail extends StatelessWidget {
             height: 12,
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 37, bottom: 52),
+            padding: const EdgeInsets.only(right: 37, bottom: 30),
             child: Text(
-              "A truly amazing example of the creation of nature, the Kapova cave with cave paintings of ancient people with...",
+              touri.content,
               style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w400,
