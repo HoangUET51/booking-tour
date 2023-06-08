@@ -90,7 +90,7 @@ class BookingDetail extends StatelessWidget {
             ),
             Positioned(
               right: 35,
-              bottom: 0,
+              bottom: -5,
               child: Container(
                 width: 32,
                 height: 32,
